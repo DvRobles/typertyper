@@ -1,0 +1,203 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://dark2.jpg" type="Texture" id=1]
+[ext_resource path="res://assets/SpaceMono-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/spaceshooter/Bonus/sfx_laser1.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Main.gd" type="Script" id=4]
+[ext_resource path="res://assets/spaceshooter/Bonus/sfx_lose.ogg" type="AudioStream" id=5]
+[ext_resource path="res://space-loopsong.mp3" type="AudioStream" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 22.9019, 333.192 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 28
+font_data = ExtResource( 2 )
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = -40.0
+margin_top = -34.0
+margin_right = 1057.0
+margin_bottom = 629.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 2
+
+[node name="LoseArea" type="Area2D" parent="."]
+position = Vector2( 0, 5.55865 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseArea"]
+position = Vector2( -52.8519, 291.747 )
+shape = SubResource( 1 )
+
+[node name="SpawnContainer" type="Node2D" parent="."]
+
+[node name="Position2D" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 1093, 80 )
+
+[node name="Position2D2" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 1089.8, 181.634 )
+
+[node name="Position2D3" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 1090, 287 )
+
+[node name="Position2D4" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 1095, 385 )
+
+[node name="Position2D5" type="Position2D" parent="SpawnContainer"]
+position = Vector2( 1097, 495 )
+
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/GameOverScreen"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameOverScreen/CenterContainer"]
+margin_left = 389.0
+margin_top = 86.0
+margin_right = 621.0
+margin_bottom = 500.0
+custom_constants/separation = 50
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 2 )
+text = "YOU LOST"
+
+[node name="Label2" type="Label" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_right = 232.0
+margin_bottom = 72.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_top = 122.0
+margin_right = 232.0
+margin_bottom = 182.0
+custom_fonts/font = SubResource( 3 )
+text = "RESTART"
+
+[node name="homePage" type="Button" parent="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer"]
+margin_top = 122.0
+margin_right = 232.0
+margin_bottom = 182.0
+custom_fonts/font = SubResource( 3 )
+text = "HOME"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="TopRow2" type="CenterContainer" parent="CanvasLayer/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 43.0
+
+[node name="TopRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/TopRow2"]
+margin_left = 408.0
+margin_right = 616.0
+margin_bottom = 43.0
+mouse_filter = 2
+
+[node name="EnemiesKilledLabel4" type="Label" parent="CanvasLayer/VBoxContainer/TopRow2/TopRow"]
+margin_right = 187.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 4 )
+text = "Asesinados:"
+
+[node name="EnemiesKilledValue" type="Label" parent="CanvasLayer/VBoxContainer/TopRow2/TopRow"]
+margin_left = 191.0
+margin_right = 208.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="MiddleRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 47.0
+margin_right = 1024.0
+margin_bottom = 553.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="BottomRow" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+margin_top = 557.0
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/BottomRow"]
+margin_right = 242.0
+margin_bottom = 43.0
+mouse_filter = 2
+
+[node name="DifficultyLabel" type="Label" parent="CanvasLayer/VBoxContainer/BottomRow/HBoxContainer"]
+margin_right = 221.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 4 )
+text = "  Dificultad:"
+
+[node name="DifficultyValue" type="Label" parent="CanvasLayer/VBoxContainer/BottomRow/HBoxContainer"]
+margin_left = 225.0
+margin_right = 242.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 4 )
+text = "0"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer/BottomRow"]
+margin_left = 246.0
+margin_right = 246.0
+margin_bottom = 43.0
+mouse_filter = 2
+
+[node name="wpm_label" type="Label" parent="CanvasLayer/VBoxContainer/BottomRow/HBoxContainer2"]
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 4 )
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="boom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+volume_db = 13.2
+
+[node name="spaceloop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -5.496
+
+[connection signal="body_entered" from="LoseArea" to="." method="_on_LoseArea_body_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_DifficultyTimer_timeout"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer/RestartButton" to="." method="_on_RestartButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/GameOverScreen/CenterContainer/VBoxContainer/homePage" to="." method="_on_homePage_pressed"]

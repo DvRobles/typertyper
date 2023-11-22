@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/space-loopsong.mp3-9d1a2c267cc41a85557c9d6da0aee753.mp3str"
+
+[deps]
+
+source_file="res://space-loopsong.mp3"
+dest_files=[ "res://.import/space-loopsong.mp3-9d1a2c267cc41a85557c9d6da0aee753.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

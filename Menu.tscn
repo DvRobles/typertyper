@@ -1,0 +1,127 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://assets/spaceshooter/PNG/UI/buttonYellow.png" type="Texture" id=1]
+[ext_resource path="res://scripts/menu.gd" type="Script" id=2]
+[ext_resource path="res://assets/SpaceMono-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/spaceshooter/PNG/UI/buttonBlue.png" type="Texture" id=4]
+[ext_resource path="res://assets/spaceshooter/Backgrounds/black.png" type="Texture" id=5]
+[ext_resource path="res://assets/spaceshooter/PNG/UI/buttonRed.png" type="Texture" id=6]
+[ext_resource path="res://logo.png" type="Texture" id=7]
+[ext_resource path="res://scripts/txtlogo.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 29
+font_data = ExtResource( 3 )
+
+[node name="Menucito" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="FONDO" type="NinePatchRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -62.0
+margin_right = 100.0
+margin_bottom = 62.0
+
+[node name="play" type="TextureButton" parent="Control/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 200, 60 )
+texture_normal = ExtResource( 1 )
+expand = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/play"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -18.0
+margin_right = 30.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 1, 0.207843, 0.368627, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "PLAY"
+
+[node name="about" type="TextureButton" parent="Control/VBoxContainer"]
+margin_top = 64.0
+margin_right = 200.0
+margin_bottom = 124.0
+rect_min_size = Vector2( 200, 60 )
+texture_normal = ExtResource( 4 )
+expand = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/about"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -30.0
+margin_top = -18.0
+margin_right = 30.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.4, 1, 0.4, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "ABOUT"
+
+[node name="help" type="TextureButton" parent="Control/VBoxContainer"]
+margin_top = 128.0
+margin_right = 200.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 200, 60 )
+texture_normal = ExtResource( 6 )
+expand = true
+
+[node name="Label" type="Label" parent="Control/VBoxContainer/help"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -18.0
+margin_right = 90.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.313726, 0.74902, 0.901961, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "HELPFUL TIPS"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -93.0
+margin_right = 93.0
+margin_bottom = 179.0
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="Control/NinePatchRect"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -95.0
+margin_top = 133.0
+margin_right = 103.0
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 2 )
+text = "Typer Typer"
+align = 1
+valign = 1
+script = ExtResource( 8 )
+
+[connection signal="pressed" from="Control/VBoxContainer/play" to="Control" method="_on_play_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/about" to="Control" method="_on_about_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/help" to="Control" method="_on_help_pressed"]

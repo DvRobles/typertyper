@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/SpaceMono-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://pagina-de-inicio.png" type="Texture" id=2]
+[ext_resource path="res://assets/spaceshooter/Backgrounds/darkPurple.png" type="Texture" id=3]
+[ext_resource path="res://scripts/aboutxt.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 1 )
+
+[node name="about" type="Node"]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 3 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/VBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 609.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "Typer Typer es un juego de acción que ayuda a los jugadores a mejorar sus habilidades de mecanografía.
+
+En Typer Typer, los jugadores viajan a través del espacio lleno de obstáculos que solo pueden ser superados escribiendo palabras y frases correctamente. A medida que los jugadores avanzan en el juego, aprenden nuevas técnicas de mecanografía y mejoran su velocidad y precisión.
+
+Typer Typer fue creado para abordar la problemática del aprendizaje de la mecanografía. La mecanografía es una habilidad esencial en el mundo actual, pero puede ser una tarea tediosa y desalentadora. Typer Typer busca hacer que el aprendizaje de la mecanografía sea más divertido y atractivo.
+
+El juego utiliza una variedad de elementos de gamificación para hacer que el aprendizaje de la mecanografía sea más divertido y atractivo.
+
+Typer Typer es un juego que tiene el potencial de ayudar a los jugadores de todas las edades y niveles de experiencia a mejorar sus habilidades de mecanografía.
+
+-DASR
+"
+fit_content_height = true
+
+[node name="home" type="TextureButton" parent="Control/VBoxContainer/RichTextLabel"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -75.0
+margin_top = -82.0
+margin_bottom = -9.0
+texture_normal = ExtResource( 2 )
+expand = true
+
+[connection signal="pressed" from="Control/VBoxContainer/RichTextLabel/home" to="Control" method="_on_home_pressed"]
